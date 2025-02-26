@@ -1,6 +1,6 @@
 
 import { SnakeGame, Position } from "../src/model";
-import { GameView } from "../src/view";
+import { GameView } from "../src/view"
 
 export class GameController {
     private game: SnakeGame;
@@ -52,5 +52,17 @@ export class GameController {
         if (this.gameLoopId) {
             clearInterval(this.gameLoopId);
         }
+
+        const playerName = prompt("Game Over! Enter your name:");
+        if (playerName) {
+            this.saveScore(playerName, this.game.score);
+        }
+    }
+
+    private saveScore(name: string, score: number): void {
+        const scores = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+        scores.push({ name, score });
+        scores.sort((a, b) => b.score - a.score);
+        localStorage.setItem("leaderboard", JSON.stringify(scores.slice(0, 5)));
     }
 }

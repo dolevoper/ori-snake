@@ -46,6 +46,16 @@ var GameController = /** @class */ (function () {
         if (this.gameLoopId) {
             clearInterval(this.gameLoopId);
         }
+        var playerName = prompt("Game Over! Enter your name:");
+        if (playerName) {
+            this.saveScore(playerName, this.game.score);
+        }
+    };
+    GameController.prototype.saveScore = function (name, score) {
+        var scores = JSON.parse(localStorage.getItem("leaderboard") || "[]");
+        scores.push({ name: name, score: score });
+        scores.sort(function (a, b) { return b.score - a.score; });
+        localStorage.setItem("leaderboard", JSON.stringify(scores.slice(0, 5)));
     };
     return GameController;
 }());

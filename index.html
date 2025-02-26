@@ -1,10 +1,11 @@
+<!-- index.html (Main Menu) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snake Game</title>
-    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="/dist/style.css">
 </head>
 <body>
     <main class="menu">
@@ -38,6 +39,14 @@
         document.getElementById("playButton").addEventListener("click", () => {
             window.location.href = "game.html";
         });
+
+        function loadLeaderboard() {
+            const scoresList = document.getElementById("scoresList");
+            const scores = JSON.parse(localStorage.getItem("leaderboard")) || [];
+            scoresList.innerHTML = scores.map(score => `<li>${score.name}: ${score.score}</li>`).join("");
+        }
+
+        window.addEventListener("load", loadLeaderboard);
     </script>
 </body>
 </html>

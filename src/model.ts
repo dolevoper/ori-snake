@@ -32,7 +32,6 @@ export class SnakeGame {
             y: this.snake[0].y + this.direction.y,
         };
 
-        // Check collisions
         if (this.checkCollision(newHead)) {
             this.isGameOver = true;
             return;
