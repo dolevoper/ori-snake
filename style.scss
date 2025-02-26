@@ -1,0 +1,60 @@
+/* styles.scss */
+$bg-color: #282c34;
+$snake-color: #4CAF50;
+$food-color: #FF5733;
+$text-color: #FFFFFF;
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: $bg-color;
+    color: $text-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.menu {
+    text-align: center;
+
+    button {
+        background: $snake-color;
+        color: $text-color;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+
+        &:hover {
+            background: darken($snake-color, 10%);
+        }
+    }
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    canvas {
+        background: black;
+        border: 2px solid $text-color;
+    }
+}
+
+#gameOverScreen {
+    display: none;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: absolute;
+
+    &.hidden {
+        display: none;
+    }
+}

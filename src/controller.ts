@@ -1,6 +1,6 @@
 
-import { SnakeGame, Position } from "./model";
-import { GameView } from "./view";
+import { SnakeGame, Position } from "../model";
+import { GameView } from "../view";
 
 export class GameController {
     private game: SnakeGame;
