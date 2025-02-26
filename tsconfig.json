@@ -7,8 +7,9 @@
       "strict": true,
       "outDir": "dist",
       "rootDir": "src",
-      "allowJs": false
+      "allowJs": false,
+      "moduleDetection": "force"
     },
     "include": ["src/**/*"]
+  }
   
-}

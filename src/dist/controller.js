@@ -1,8 +1,8 @@
 "use strict";
 exports.__esModule = true;
 exports.GameController = void 0;
-var model_1 = require("../model");
-var view_1 = require("../view");
+var model_1 = require("../src/model");
+var view_1 = require("../src/view");
 var GameController = /** @class */ (function () {
     function GameController() {
         this.gameLoopId = null;
