@@ -1,9 +1,5 @@
-"use strict";
-exports.__esModule = true;
-exports.SnakeGame = void 0;
-var SnakeGame = /** @class */ (function () {
-    function SnakeGame(difficulty) {
-        if (difficulty === void 0) { difficulty = "normal"; }
+export class SnakeGame {
+    constructor(difficulty = "normal") {
         this.snake = [{ x: 5, y: 5 }];
         this.food = this.generateFood();
         this.direction = { x: 1, y: 0 };
@@ -11,18 +7,18 @@ var SnakeGame = /** @class */ (function () {
         this.isGameOver = false;
         this.difficulty = difficulty;
     }
-    SnakeGame.prototype.generateFood = function () {
+    generateFood() {
         return {
             x: Math.floor(Math.random() * 20),
-            y: Math.floor(Math.random() * 20)
+            y: Math.floor(Math.random() * 20),
         };
-    };
-    SnakeGame.prototype.moveSnake = function () {
+    }
+    moveSnake() {
         if (this.isGameOver)
             return;
-        var newHead = {
+        const newHead = {
             x: this.snake[0].x + this.direction.x,
-            y: this.snake[0].y + this.direction.y
+            y: this.snake[0].y + this.direction.y,
         };
         if (this.checkCollision(newHead)) {
             this.isGameOver = true;
@@ -36,17 +32,15 @@ var SnakeGame = /** @class */ (function () {
         else {
             this.snake.pop();
         }
-    };
-    SnakeGame.prototype.checkCollision = function (position) {
+    }
+    checkCollision(position) {
         return (position.x < 0 || position.x >= 20 ||
             position.y < 0 || position.y >= 20 ||
-            this.snake.some(function (segment) { return segment.x === position.x && segment.y === position.y; }));
-    };
-    SnakeGame.prototype.setDirection = function (newDirection) {
+            this.snake.some(segment => segment.x === position.x && segment.y === position.y));
+    }
+    setDirection(newDirection) {
         if ((this.direction.x === 0 && newDirection.x !== 0) || (this.direction.y === 0 && newDirection.y !== 0)) {
             this.direction = newDirection;
         }
-    };
-    return SnakeGame;
-}());
-exports.SnakeGame = SnakeGame;
+    }
+}

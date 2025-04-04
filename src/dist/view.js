@@ -1,8 +1,5 @@
-"use strict";
-exports.__esModule = true;
-exports.GameView = void 0;
-var GameView = /** @class */ (function () {
-    function GameView(game) {
+export class GameView {
+    constructor(game) {
         this.canvas = document.getElementById("gameCanvas");
         this.ctx = this.canvas.getContext("2d");
         this.game = game;
@@ -10,7 +7,7 @@ var GameView = /** @class */ (function () {
         this.gameOverScreen = document.getElementById("gameOverScreen");
         this.playerNameInput = document.getElementById("playerName");
     }
-    GameView.prototype.render = function () {
+    render() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.drawSnake();
         this.drawFood();
@@ -18,24 +15,21 @@ var GameView = /** @class */ (function () {
         if (this.game.isGameOver) {
             this.showGameOverScreen();
         }
-    };
-    GameView.prototype.drawSnake = function () {
-        var _this = this;
+    }
+    drawSnake() {
         this.ctx.fillStyle = "green";
-        this.game.snake.forEach(function (segment) {
-            _this.ctx.fillRect(segment.x * 20, segment.y * 20, 20, 20);
+        this.game.snake.forEach(segment => {
+            this.ctx.fillRect(segment.x * 20, segment.y * 20, 20, 20);
         });
-    };
-    GameView.prototype.drawFood = function () {
+    }
+    drawFood() {
         this.ctx.fillStyle = "red";
         this.ctx.fillRect(this.game.food.x * 20, this.game.food.y * 20, 20, 20);
-    };
-    GameView.prototype.updateScore = function () {
+    }
+    updateScore() {
         this.scoreDisplay.textContent = this.game.score.toString();
-    };
-    GameView.prototype.showGameOverScreen = function () {
+    }
+    showGameOverScreen() {
         this.gameOverScreen.classList.remove("hidden");
-    };
-    return GameView;
-}());
-exports.GameView = GameView;
+    }
+}

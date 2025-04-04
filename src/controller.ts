@@ -1,6 +1,5 @@
-
-import { SnakeGame, Position } from "../src/model";
-import { GameView } from "../src/view"
+import { SnakeGame, Position } from "./model.js";
+import { GameView } from "./view.js"
 
 export class GameController {
     private game: SnakeGame;
@@ -66,3 +65,6 @@ export class GameController {
         localStorage.setItem("leaderboard", JSON.stringify(scores.slice(0, 5)));
     }
 }
+
+
+new GameController().startGame();

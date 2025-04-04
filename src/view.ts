@@ -1,4 +1,4 @@
-import { SnakeGame, Position } from "../src/model";
+import { SnakeGame } from "./model.js";
 
 export class GameView {
     private canvas: HTMLCanvasElement;
